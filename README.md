@@ -51,6 +51,20 @@ However, assuming the trunk line has limited infrastructure,
 implementing those patterns may be challenging, 
 needing the help of time tables and extra station capacities.
 
------------------------
+# Implementation goals:
+By having control over in-station dwelling time, number of trains, and detecting station throughput we can implement:
 
-The mod aims to provide a tool box that can help manage services with lines of different terminal stops and service patterns.
+Step by step:
+1. Assume that each line within the service has their dedicated dual track (no conflict among line), 
+thus reducing this mod to a line manager, on top of which, implement branching (or even express/local) service pattern.
+2. Support branching line service model on constratined infrastructure (thi will implemnet early terminatation service pattern),
+where we guarantee a minimal frequency on the core segment and a minmium frequency on the branching segments with bias.
+3. Support local / express service pattern on dual track trunk line,
+where we guarantee a minmial frequency on some time point stations for each line and suggest a best case timetable.
+
+# Future ideas
+1. Allow mixing of the two service pattern in one service (express service from branch A to core and terminate early)
+2. Support local+express+limited express service pattern on three track trunk line.
+3. Allow reassignment of train midway in the service if needed to minimize maintaince 
+(at terminal / storage station, reassign infrequent express train to local train).
+4. Allow even/odd stop station design running on the same trunk line (with bypass line).
